@@ -4,7 +4,6 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 import com.snehpandya.livedatademo.database.AppDatabase;
@@ -34,8 +33,24 @@ public class NameViewModel extends AndroidViewModel {
         return itemAndPersonList;
     }
 
-    public void deleteItem(BorrowModel borrowModel) {
-        new deleteAsyncTask(mAppDatabase).execute(borrowModel);
+    public void addItem() {
+        mAppDatabase.mBorrowModelDao().addBorrow(new BorrowModel("Google", "Jon Skeet"));
+    }
+
+    public void updateItem(String string) {
+        mAppDatabase.mBorrowModelDao().updateBorrow(string);
+    }
+
+    public void updateMultipleItems(String string) {
+        mAppDatabase.mBorrowModelDao().updateAllBorrow(string);
+    }
+
+    public void deleteAllItems() {
+        mAppDatabase.mBorrowModelDao().deleteAllBorrow();
+    }
+
+    public void deleteItem() {
+        mAppDatabase.mBorrowModelDao().deleteSingleBorrow();
     }
 
     public MutableLiveData<String> getCurrentName() {
@@ -43,20 +58,5 @@ public class NameViewModel extends AndroidViewModel {
             mCurrentName = new MutableLiveData<String>();
         }
         return mCurrentName;
-    }
-
-    private static class deleteAsyncTask extends AsyncTask<BorrowModel, Void, Void> {
-
-        private AppDatabase mAppDatabase;
-
-        deleteAsyncTask(AppDatabase appDatabase) {
-            mAppDatabase = appDatabase;
-        }
-
-        @Override
-        protected Void doInBackground(final BorrowModel... params) {
-            mAppDatabase.mBorrowModelDao().deleteBorrow(params[0]);
-            return null;
-        }
     }
 }

@@ -9,4 +9,6 @@ public class DbConfig {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "borrow.db";
     public static final String TABLE_NAME = "BorrowModel";
+    public static final String COLUMN_ITEM_NAME = "itemName";
+    public static final String COLUMN_PERSON_NAME = "personName";
 }
