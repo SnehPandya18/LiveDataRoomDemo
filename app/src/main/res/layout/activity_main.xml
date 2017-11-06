@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:onClickListener="@{activity.onClick}"
                 android:text="@string/insert"/>
 
             <Button
@@ -45,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:onClickListener="@{activity.onClick}"
                 android:text="@string/delete"/>
         </LinearLayout>
 
@@ -62,7 +60,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:onClickListener="@{activity.onClick}"
                 android:text="@string/update_all"/>
 
             <Button
@@ -71,7 +68,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:onClickListener="@{activity.onClick}"
                 android:text="@string/delete_all"/>
         </LinearLayout>
 
@@ -81,7 +77,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:onClickListener="@{activity.onClick}"
             android:text="@string/update"/>
 
         <EditText
